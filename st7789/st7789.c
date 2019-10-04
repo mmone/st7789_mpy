@@ -98,8 +98,10 @@ STATIC void set_window(st7789_ST7789_obj_t *self, uint8_t x0, uint8_t y0, uint8_
     if (y0 > y1 || y1 > self->height) {
         return;
     }
-    uint8_t bufx[4] = {x0 >> 8, x0 & 0xFF, x1 >> 8, x1 & 0xFF};
-    uint8_t bufy[4] = {y0 >> 8, y0 & 0xFF, y1 >> 8, y1 & 0xFF};
+    
+    uint8_t bufx[4] = {(x0+ST7789_XSTART) >> 8, (x0+ST7789_XSTART) & 0xFF, (x1+ST7789_XSTART) >> 8, (x1+ST7789_XSTART) & 0xFF};
+    uint8_t bufy[4] = {(y0+ST7789_YSTART) >> 8, (y0+ST7789_YSTART) & 0xFF, (y1+ST7789_YSTART) >> 8, (y1+ST7789_YSTART) & 0xFF};
+    
     write_cmd(self, ST7789_CASET, bufx, 4);
     write_cmd(self, ST7789_RASET, bufy, 4);
     write_cmd(self, ST7789_RAMWR, NULL, 0);

@@ -5,6 +5,9 @@
 extern "C" {
 #endif
 
+#define ST7789_XSTART 52
+#define ST7789_YSTART 40
+
 // color modes
 #define COLOR_MODE_65K      0x50
 #define COLOR_MODE_262K     0x60
