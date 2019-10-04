@@ -64,7 +64,7 @@ DC pins on the screen for the display object.
     import st7789
     spi = machine.SPI(1, baudrate=40000000, polarity=1)
     display = st7789.ST7789(spi, 240, 240, reset=machine.Pin(5, machine.Pin.OUT), dc=machine.Pin(4, machine.Pin.OUT))
-
+    display.init()
 
 For ESP32 modules you have to provide specific pins for SPI.
 Unfortunately, I was unable to run this display on SPI(1) interface.
@@ -82,7 +82,7 @@ Other SPI pins are not used.
     import st7789
     spi = machine.SPI(2, baudrate=40000000, polarity=1, sck=machine.Pin(18), mosi=machine.Pin(23))
     display = st7789.ST7789(spi, 240, 240, reset=machine.Pin(4, machine.Pin.OUT), dc=machine.Pin(2, machine.Pin.OUT))
-
+    display.init()
 
 I couldn't run the display on an SPI with baudrate higher than 40MHZ
 
